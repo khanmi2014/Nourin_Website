@@ -188,14 +188,18 @@ body {
   background: #ffe4ec;
 }
 .reasons ul {
-  list-style: none;
+  list-style-type: disc;
+  list-style-position: inside;
   max-width: 600px;
   margin: auto;
+  text-align: center;
+  padding-left: 1rem;
 }
 .reasons li {
   margin: 0.5rem 0;
   font-family: 'Dancing Script', cursive;
   font-size: 1.2rem;
+  line-height: 1.5;
 }
 
 /* Card */
