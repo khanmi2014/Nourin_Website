@@ -1,6 +1,7 @@
-// Countdown Function
-function countdown(id, targetDate) {
-  let target = new Date(targetDate).getTime();
+// Local-Time Countdown Function
+function countdown(id, targetDateLocal) {
+  // Parse the target date as LOCAL time for each viewer
+  let target = new Date(targetDateLocal).getTime();
 
   setInterval(function () {
     let now = new Date().getTime();
@@ -16,15 +17,17 @@ function countdown(id, targetDate) {
     let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById(id).innerHTML =
-  `<span>${days}d</span> <span>${hours}h</span> <span>${minutes}m</span> <span>${seconds}s</span>`;
+    document.getElementById(id).innerHTML = `
+      <span>${days}d</span> 
+      <span>${hours}h</span> 
+      <span>${minutes}m</span> 
+      <span>${seconds}s</span>`;
   }, 1000);
 }
 
-// Dates
-countdown("anniversary", "2026-07-15");
-countdown("firstmet", "2026-01-01");
-countdown("nextmeet", "2025-12-14");
+countdown("anniversary", "2026-07-15T00:00:00");
+countdown("firstmet", "2026-01-01T00:00:00");
+countdown("nextmeet", "2025-12-14T00:00:00");
 
 // Confetti Effect
 function throwConfetti() {
@@ -93,33 +96,59 @@ complimentBtn.addEventListener("click", function () {
   complimentOutput.classList.add("fade-in");
 });
 
-// Wedding Video Lightbox
+// Wedding Video Lightbox (YouTube version)
 document.addEventListener("DOMContentLoaded", () => {
-  const videoTrigger = document.querySelector(".video-trigger video");
+  const videoTrigger = document.querySelector(".video-trigger");
   const videoPopup = document.getElementById("video-popup");
   const popupVideo = document.getElementById("popup-video");
   const closeVideoBtn = document.getElementById("close-video-popup");
 
+  // Replace with your actual YouTube video ID
+  const YOUTUBE_VIDEO_ID = "oiXjDZua0YA";
+
+  // Open popup and start playing YouTube video
   videoTrigger.addEventListener("click", () => {
-    popupVideo.src = videoTrigger.querySelector("source").src; // copy video source
+    popupVideo.src = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0`;
     videoPopup.style.display = "flex";
-    popupVideo.play();
   });
 
+  // Close popup and stop video
   closeVideoBtn.addEventListener("click", () => {
+    popupVideo.src = "";
     videoPopup.style.display = "none";
-    popupVideo.pause();
-    popupVideo.currentTime = 0; // reset video
   });
 
+  // Close popup when clicking outside the iframe
   videoPopup.addEventListener("click", (e) => {
     if (e.target === videoPopup) {
+      popupVideo.src = "";
       videoPopup.style.display = "none";
-      popupVideo.pause();
-      popupVideo.currentTime = 0;
     }
   });
 });
+
+
+// Image Popup (Lightbox)
+document.addEventListener("DOMContentLoaded", () => {
+  const popup = document.getElementById("image-popup");
+  const popupImg = document.getElementById("popup-img");
+  const closeBtn = document.getElementById("close-popup");
+
+  // Handle clicks on timeline images
+  document.querySelectorAll(".timeline-img").forEach(img => {
+    img.addEventListener("click", () => {
+      popup.style.display = "flex";
+      popupImg.src = img.src;
+    });
+  });
+
+  // Close when clicking X or outside image
+  closeBtn.addEventListener("click", () => popup.style.display = "none");
+  popup.addEventListener("click", e => {
+    if (e.target === popup) popup.style.display = "none";
+  });
+});
+
 
 
 

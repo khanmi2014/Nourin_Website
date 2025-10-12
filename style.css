@@ -266,18 +266,18 @@ body {
   text-align: center;
 }
 
-.video-trigger video {
+.video-trigger img {
   width: 100%;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.3);
   transition: transform 0.3s ease;
 }
 
-.video-trigger video:hover {
+.video-trigger img:hover {
   transform: scale(1.05);
 }
 
-/* Video Popup Lightbox */
+/* Popup Overlay */
 .video-popup {
   display: none;
   position: fixed;
@@ -286,27 +286,29 @@ body {
   top: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.85);
+  background: rgba(0, 0, 0, 0.85);
   justify-content: center;
   align-items: center;
 }
 
-.video-popup video {
+/* Responsive iframe container */
+.video-container {
+  position: relative;
   width: 90%;
   max-width: 900px;
-  border-radius: 15px;
-  box-shadow: 
-    0 0 20px rgba(255,111,145,0.7),   /* soft pink glow */
+  aspect-ratio: 16 / 9;
+  box-shadow:
+    0 0 20px rgba(255,111,145,0.7),
     0 0 40px rgba(255,111,145,0.5),
-    0 0 60px rgba(255,111,145,0.3);    /* layered glow for depth */
-  transition: box-shadow 0.3s ease;
+    0 0 60px rgba(255,111,145,0.3);
+  border-radius: 15px;
+  overflow: hidden;
 }
 
-.video-popup video:hover {
-  box-shadow: 
-    0 0 30px rgba(255,111,145,0.8),
-    0 0 50px rgba(255,111,145,0.6),
-    0 0 70px rgba(255,111,145,0.4);
+.video-container iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 
 .close-btn {
@@ -320,7 +322,7 @@ body {
 }
 
 @media (max-width: 600px) {
-  .video-popup video {
+  .video-container {
     width: 95%;
   }
   .close-btn {
