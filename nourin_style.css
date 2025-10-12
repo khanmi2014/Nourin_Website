@@ -1,0 +1,593 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background: #fffafc;
+  color: #333;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Popup */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup-box {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  max-width: 500px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: fadeIn 1s ease;
+}
+
+.popup-box h1 {
+  color: #ff6f91;
+  margin: 1rem 0;
+}
+
+.popup-box button {
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 25px;
+  background: #ff6f91;
+  color: #fff;
+  cursor: pointer;
+}
+.popup-box button:hover {
+  background: #ff4d6d;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Mobile Styles for Popup */
+@media (max-width: 600px) {
+  .popup-box {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  .popup-box h1 {
+    font-size: 1.8rem;
+  }
+
+  .popup-box h2 {
+    font-size: 1.2rem;
+  }
+
+  .popup-box button {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+    border-radius: 30px;
+  }
+}
+
+
+/* Hero */
+.hero {
+  background: linear-gradient(to right, #ff9a9e, #fad0c4);
+  padding: 4rem 2rem;
+  color: white;
+}
+.hero h1 {
+  font-size: clamp(1.8rem, 6vw, 3rem);
+}
+.hero p {
+  font-size: 1.2rem;
+}
+
+
+/* Timeline */
+.timeline {
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.timeline h2 {
+  margin-bottom: 2rem;
+}
+
+/* Timeline line */
+.timeline-line {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 80px;
+  border-top: 3px solid #ff6f91;
+  padding: 2rem 2rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+}
+
+.timeline-event .event-content p {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.1rem;
+  color: #ff4d6d;
+  line-height: 1.5;
+}
+
+/* Each event */
+.timeline-event {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto;
+  width: 250px;
+
+  white-space: normal;
+  word-wrap: break-word;
+}
+
+/* Dot on the line */
+.event-dot {
+  width: 16px;
+  height: 16px;
+  background: #ff6f91;
+  border-radius: 50%;
+  border: 3px solid white;
+  position: absolute;
+  top: -10px;
+}
+
+/* Event content */
+.event-content {
+  margin-top: 30px;
+}
+
+.event-content .date {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.event-content img {
+  margin-top: 0.5rem;
+  max-width: 120px;
+  border-radius: 8px;
+}
+
+/* Scroll bar style for horizontal scroll */
+.timeline-line::-webkit-scrollbar {
+  height: 10px;
+}
+.timeline-line::-webkit-scrollbar-thumb {
+  background: #ff6f91;
+  border-radius: 5px;
+}
+.timeline-line::-webkit-scrollbar-thumb:hover {
+  background: #ff4d6d;
+}
+
+/* Reasons */
+.reasons {
+  padding: 3rem 1rem;
+  background: #ffe4ec;
+}
+.reasons ul {
+  list-style: none;
+  max-width: 600px;
+  margin: auto;
+}
+.reasons li {
+  margin: 0.5rem 0;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2rem;
+}
+
+/* Card */
+.card {
+  padding: 3rem 1rem;
+  background: #fff0f6;
+}
+.card p {
+  max-width: 600px;
+  margin: 1rem auto;
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.2rem;
+}
+.card button {
+  background: #ff6f91;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 20px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.card button:hover {
+  background: #ff4d6d;
+}
+
+/* Compliment Generator */
+#compliment-generator {
+  text-align: center;
+  padding: 60px 20px;
+  background: #fff5f7;
+  border-top: 2px solid #ffd6e0;
+}
+
+#compliment-generator h2 {
+  color: #ff6f91;
+  margin-bottom: 10px;
+}
+
+#compliment-btn {
+  background-color: #ff6f91;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+#compliment-btn:hover {
+  background-color: #ff4d6d;
+}
+
+.compliment-text {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  color: #333;
+  font-style: italic;
+  min-height: 40px;
+}
+
+/* Video Trigger Section */
+.video-trigger {
+  max-width: 400px;
+  margin: 0 auto;
+  cursor: pointer;
+  text-align: center;
+}
+
+.video-trigger video {
+  width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.video-trigger video:hover {
+  transform: scale(1.05);
+}
+
+/* Video Popup Lightbox */
+.video-popup {
+  display: none;
+  position: fixed;
+  z-index: 3000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.85);
+  justify-content: center;
+  align-items: center;
+}
+
+.video-popup video {
+  width: 90%;
+  max-width: 900px;
+  border-radius: 15px;
+  box-shadow: 
+    0 0 20px rgba(255,111,145,0.7),   /* soft pink glow */
+    0 0 40px rgba(255,111,145,0.5),
+    0 0 60px rgba(255,111,145,0.3);    /* layered glow for depth */
+  transition: box-shadow 0.3s ease;
+}
+
+.video-popup video:hover {
+  box-shadow: 
+    0 0 30px rgba(255,111,145,0.8),
+    0 0 50px rgba(255,111,145,0.6),
+    0 0 70px rgba(255,111,145,0.4);
+}
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .video-popup video {
+    width: 95%;
+  }
+  .close-btn {
+    font-size: 1.8rem;
+    top: 15px;
+    right: 20px;
+  }
+}
+
+/* Favorite Songs Section */
+#favorite-songs {
+  text-align: center;
+  background: #fff;
+  padding: 60px 20px;
+  border-top: 2px solid #ffd6e0;
+}
+
+#favorite-songs h2 {
+  color: #ff6f91;
+  margin-bottom: 25px;
+  font-size: 2rem;
+}
+
+.songs-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.song-card {
+  background: #fff5f7;
+  border: 1px solid #ffd6e0;
+  border-radius: 15px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.song-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+}
+
+.song-cover {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.song-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+audio {
+  width: 100%;
+  outline: none;
+  border-radius: 8px;
+}
+
+/* Font for the generated compliment text only */
+#compliment-output {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.7rem;
+  line-height: 1.4;
+}
+
+
+/* Fade-in animation for compliments */
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Countdowns */
+.countdowns {
+  padding: 3rem 1rem;
+}
+.countdown {
+  margin: 1rem auto;
+  max-width: 400px;
+  background: #fefefe;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Boxed & Segmented Countdown */
+.countdown p {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap;   /* keep all units on one line */
+}
+
+.countdown p span {
+  flex: 1 1 auto;       /* allow box to shrink or grow */
+  min-width: 60px;      /* minimum width for readability */
+  max-width: 100px;     /* prevent boxes from getting too wide */
+  background: #ff6f91;
+  color: #fff;
+  padding: 15px 10px;
+  border-radius: 10px;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255,111,145,0.7), 0 0 20px rgba(255,111,145,0.5);
+  white-space: nowrap;  /* prevent wrapping inside the box */
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .countdown p span {
+    font-size: 1.5rem;
+    padding: 10px 8px;
+    min-width: 50px;
+  }
+}
+
+
+/* Footer */
+footer {
+  background: #ff9a9e;
+  color: white;
+  padding: 1rem;
+  font-size: 1.1rem;
+}
+
+footer .author .creator {
+  font-style: italic;  /* italic text */
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .timeline-line {
+    gap: 1rem;
+  }
+  .event-content img {
+    max-width: 80px;
+  }
+}
+
+/* Mobile adjustments for Compliment Generator */
+@media (max-width: 600px) {
+  #compliment-generator {
+    padding: 40px 15px;
+  }
+
+  #compliment-generator h2 {
+    font-size: 1.5rem;
+  }
+
+  #compliment-btn {
+    width: 80%;
+    font-size: 1rem;
+    padding: 14px 0;
+  }
+
+  .compliment-text {
+    font-size: 1.1rem;
+  }
+}
+
+/* Mobile adjustments for Favorite Songs */
+@media (max-width: 600px) {
+  #favorite-songs {
+    padding: 40px 15px;
+  }
+
+  #favorite-songs h2 {
+    font-size: 1.6rem;
+  }
+
+  .songs-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .song-card {
+    width: 90%;
+  }
+
+  .song-title {
+    font-size: 1rem;
+  }
+
+  audio {
+    height: 40px;
+  }
+}
+
+/* Image Popup (Lightbox) */
+.image-popup {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.image-popup img {
+  max-width: 90%;
+  max-height: 85%;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  animation: zoomIn 0.4s ease;
+}
+
+.close-btn {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+@keyframes zoomIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px) {
+  .image-popup img {
+    max-width: 95%;
+    max-height: 80%;
+  }
+  .close-btn {
+    top: 15px;
+    right: 20px;
+    font-size: 1.8rem;
+  }
+}
+
+/* Confetti Effect */
+.confetti {
+  position: fixed;
+  top: -10px;
+  width: 10px;
+  height: 10px;
+  background: hsl(var(--hue, 0), 100%, 50%);
+  animation: fall linear forwards;
+}
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
