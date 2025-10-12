@@ -37,6 +37,7 @@ body {
 }
 
 .popup-box h1 {
+  font-family: 'Dancing Script', cursive;
   color: #ff6f91;
   margin: 1rem 0;
 }
