@@ -8,7 +8,7 @@ function countdown(id, targetDateLocal) {
     let distance = target - now;
 
     if (distance < 0) {
-      document.getElementById(id).innerHTML = "🎉 Happened!";
+      document.getElementById(id).innerHTML = "🎉 The Day is here!";
       return;
     }
 
@@ -18,10 +18,11 @@ function countdown(id, targetDateLocal) {
     let seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
     document.getElementById(id).innerHTML = `
-      <span>${days}d</span> 
-      <span>${hours}h</span> 
-      <span>${minutes}m</span> 
-      <span>${seconds}s</span>`;
+    <span><strong>${days}</strong><small>Days</small></span>
+    <span><strong>${hours}</strong><small>Hours</small></span>
+    <span><strong>${minutes}</strong><small>Minutes</small></span>
+    <span><strong>${seconds}</strong><small>Seconds</small></span>
+  `;
   }, 1000);
 }
 

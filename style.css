@@ -211,7 +211,7 @@ body {
   max-width: 600px;
   margin: 1rem auto;
   font-family: 'Dancing Script', cursive;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 .card button {
   background: #ff6f91;
@@ -418,7 +418,9 @@ audio {
 /* Countdowns */
 .countdowns {
   padding: 3rem 1rem;
+  text-align: center;
 }
+
 .countdown {
   margin: 1rem auto;
   max-width: 400px;
@@ -428,36 +430,59 @@ audio {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
-/* Boxed & Segmented Countdown */
+.countdown h3 {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+/* Digital-style countdown boxes */
 .countdown p {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  flex-wrap: nowrap;   /* keep all units on one line */
+  gap: 12px;
+  flex-wrap: nowrap;
 }
 
 .countdown p span {
-  flex: 1 1 auto;       /* allow box to shrink or grow */
-  min-width: 60px;      /* minimum width for readability */
-  max-width: 100px;     /* prevent boxes from getting too wide */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: #ff6f91;
   color: #fff;
   padding: 15px 10px;
   border-radius: 10px;
   font-family: 'Orbitron', sans-serif;
-  font-size: 2rem;
-  font-weight: 500;
-  text-align: center;
   box-shadow: 0 0 10px rgba(255,111,145,0.7), 0 0 20px rgba(255,111,145,0.5);
-  white-space: nowrap;  /* prevent wrapping inside the box */
+  min-width: 70px;
+}
+
+.countdown p span strong {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.countdown p span small {
+  font-size: 0.8rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* Mobile adjustments */
 @media (max-width: 600px) {
   .countdown p span {
-    font-size: 1.5rem;
     padding: 10px 8px;
-    min-width: 50px;
+    min-width: 55px;
+  }
+  .countdown p span strong {
+    font-size: 1.6rem;
+  }
+  .countdown p span small {
+    font-size: 0.7rem;
   }
 }
 
