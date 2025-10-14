@@ -150,7 +150,37 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Song Carousel
+document.addEventListener("DOMContentLoaded", () => {
+  const wrapper = document.querySelector(".songs-wrapper");
+  const nextBtn = document.querySelector(".next-btn");
+  const prevBtn = document.querySelector(".prev-btn");
+  const totalSongs = document.querySelectorAll(".song-card").length;
+  let index = 0;
 
+  function updateCarousel() {
+    wrapper.style.transform = `translateX(-${index * 100}%)`;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    index = (index + 1) % totalSongs;
+    updateCarousel();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    index = (index - 1 + totalSongs) % totalSongs;
+    updateCarousel();
+  });
+
+  // Swipe support for mobile
+  let startX = 0;
+  wrapper.addEventListener("touchstart", e => (startX = e.touches[0].clientX));
+  wrapper.addEventListener("touchend", e => {
+    let endX = e.changedTouches[0].clientX;
+    if (startX - endX > 50) nextBtn.click();
+    else if (endX - startX > 50) prevBtn.click();
+  });
+});
 
 
 

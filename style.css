@@ -350,26 +350,29 @@ body {
   font-size: 2rem;
 }
 
-.songs-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 25px;
+/* Carousel container */
+.songs-carousel {
+  position: relative;
+  max-width: 350px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
+/* Inner wrapper that slides */
+.songs-wrapper {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+/* Each card */
 .song-card {
+  flex: 0 0 100%;
   background: #fff5f7;
   border: 1px solid #ffd6e0;
   border-radius: 15px;
   padding: 20px;
-  width: 300px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.song-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  text-align: center;
 }
 
 .song-cover {
@@ -387,8 +390,39 @@ body {
 
 audio {
   width: 100%;
-  outline: none;
   border-radius: 8px;
+}
+
+/* Song navigation buttons below card */
+.song-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.song-btn {
+  background: #ff6f91;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.song-btn:hover {
+  background: #ff4d6d;
+  transform: translateY(-2px);
+}
+
+/* Hide buttons on mobile, keep swipe */
+@media (max-width: 768px) {
+  .song-controls {
+    display: none;
+  }
 }
 
 /* Font for the generated compliment text only */
