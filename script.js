@@ -66,7 +66,7 @@ const compliments = [
   "Your kindness makes this world better",
   "You’re the reason my world feels right",
   "Tomar mugdhokor chehara ta protidin dekhte bhalo lage",
-  "Your mother is a very lucky woman, having a daughter as wonderful as you",
+  "Mamoni is a very lucky woman, having a daughter as wonderful as you",
   "Tomar hasi dekhlei ami bar bar prem e pori",
   "Tomar shonge thakle shob kichu shundor lage",
   "Tumi eto shundor je chokh ferano mushkil!",
