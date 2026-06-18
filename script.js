@@ -28,7 +28,7 @@ function countdown(id, targetDateLocal) {
 
 countdown("anniversary", "2026-07-15T00:00:00");
 countdown("firstmet", "2026-01-01T00:00:00");
-countdown("nextmeet", "2025-12-14T00:00:00");
+countdown("nextmeet", "2026-08-02T00:00:00");
 
 // Confetti Effect
 function throwConfetti() {
