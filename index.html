@@ -24,7 +24,7 @@
   
   <!-- Hero Section -->
   <header class="hero">
-    <h1>Happy Birthday, Nourin 🥳</h1>
+    <h1>One Year of Forever ❤️</h1>
   </header>
 
   <!-- Horizontal Timeline -->
@@ -190,6 +190,26 @@
       <div class="event-dot"></div>
     </div>
 
+  <!-- Event 18 -->
+  <div class="timeline-event">
+    <div class="event-content">
+      <span class="date">October 15, 2025</span>
+      <p>Nourn's first birthday as my wife 🎉🥳</p>
+      <img src="images/nourin_bday.jpg" alt="Birthday" class="timeline-img"/>
+    </div>
+    <div class="event-dot"></div>
+  </div>
+
+<!-- Event 19 -->
+  <div class="timeline-event">
+    <div class="event-content">
+      <span class="date">December 16, 2025 - December 24, 2025</span>
+      <p>Malaysia Trip 🇲🇾</p>
+      <img src="images/malay1.jpg" alt="Malaysia" class="timeline-img"/>
+    </div>
+    <div class="event-dot"></div>
+  </div>
+
 </section>
 
   <!-- Reasons I Love You -->
@@ -226,10 +246,23 @@
 
   <!-- Digital Birthday Card -->
   <section class="card">
-    <h2>🎂 Birthday Wish 🎂</h2>
-    <p>Happy Birthday to the love of my life. You are my best friend, my soulmate, and my greatest blessing. I love you more with each passing day. 💕</p>
-    <button onclick="throwConfetti()">Celebrate 🎉</button>
+    <h2>💍 Anniversary Promises 💍</h2>
+    <p>I promise to protect your smile.</p>
+    <p>I promise to keep choosing you.</p>
+    <p>I promise to make distance feel smaller with love.</p>
+    <button onclick="sendPromiseKisses(this)">Send Kisses 💋</button>
   </section>
+
+  <!-- Memory Generator -->
+<section id="memory-generator">
+  <h2>💭 Memory Generator 💭</h2>
+  <p>Click the button below to revisit one of our memories</p>
+  <button id="memory-btn">Generate Memory</button>
+  <div id="memory-output" class="memory-output">
+    <img id="memory-img" src="" alt="Generated memory">
+    <p id="memory-caption" class="memory-caption"></p>
+  </div>
+</section>
 
   <!-- Compliment Generator -->
 <section id="compliment-generator">
@@ -243,10 +276,22 @@
 <section id="wedding-video">
   <h2>🎥 Our Wedding Video 🎥</h2>
 
-  <!-- Thumbnail trigger -->
-  <div class="video-trigger">
-    <img src="images/akhd_thumbnail.jpg" alt="Wedding Video Thumbnail">
-    <p class="video-caption">Click/Tap to play</p>
+  <!-- Thumbnail triggers -->
+  <div class="video-gallery">
+    <div class="video-trigger" data-video-id="8fdhevw-pB0">
+      <img src="images/holud_maisa_shafat.jpg" alt="Holud Video Thumbnail">
+      <p class="video-caption">Holud</p>
+    </div>
+
+    <div class="video-trigger" data-video-id="oiXjDZua0YA">
+      <img src="images/akhd_thumbnail.jpg" alt="Akhd Video Thumbnail">
+      <p class="video-caption">Akhd</p>
+    </div>
+
+    <div class="video-trigger" data-video-id="eRB7Q9sFPaY">
+      <img src="images/event_maisa_shafat.jpg" alt="The Event Video Thumbnail">
+      <p class="video-caption">The Event</p>
+    </div>
   </div>
 </section>
 
@@ -338,10 +383,6 @@
     <div class="countdown">
       <h3>Our Wedding Anniversary 💍</h3>
       <p id="anniversary"></p>
-    </div>
-    <div class="countdown">
-      <h3>The Day We First Met 👩‍❤️‍👨</h3>
-      <p id="firstmet"></p>
     </div>
     <div class="countdown">
       <h3>Next Time We Meet 🫂</h3>

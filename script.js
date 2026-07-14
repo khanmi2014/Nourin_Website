@@ -27,7 +27,6 @@ function countdown(id, targetDateLocal) {
 }
 
 countdown("anniversary", "2026-07-15T00:00:00");
-countdown("firstmet", "2026-01-01T00:00:00");
 countdown("nextmeet", "2026-08-02T00:00:00");
 
 // Confetti Effect
@@ -42,6 +41,60 @@ function throwConfetti() {
     setTimeout(() => {
       confetti.remove();
     }, 5000);
+  }
+}
+
+// Romantic Floating Hearts Effect
+function createFloatingHeart() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const heart = document.createElement("span");
+  const duration = Math.random() * 4 + 6;
+  const drift = Math.random() * 120 - 60;
+  const size = Math.random() * 1.2 + 0.9;
+
+  heart.className = "floating-heart";
+  heart.textContent = "❤";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.setProperty("--heart-duration", duration + "s");
+  heart.style.setProperty("--heart-drift", drift + "px");
+  heart.style.setProperty("--heart-size", size + "rem");
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, duration * 1000);
+}
+
+setInterval(createFloatingHeart, 1400);
+
+function sendPromiseKisses(button) {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const rect = button.getBoundingClientRect();
+  const startX = rect.left + rect.width / 2;
+  const startY = rect.top + rect.height / 2;
+
+  for (let i = 0; i < 24; i++) {
+    const kiss = document.createElement("span");
+    const duration = Math.random() * 1.8 + 2.8;
+    const drift = Math.random() * 180 - 90;
+    const lift = Math.random() * 180 + 170;
+    const size = Math.random() * 1.1 + 1;
+
+    kiss.className = "promise-kiss";
+    kiss.textContent = "💋";
+    kiss.style.left = startX + "px";
+    kiss.style.top = startY + "px";
+    kiss.style.setProperty("--promise-kiss-duration", duration + "s");
+    kiss.style.setProperty("--promise-kiss-drift", drift + "px");
+    kiss.style.setProperty("--promise-kiss-lift", "-" + lift + "px");
+    kiss.style.setProperty("--promise-kiss-size", size + "rem");
+    document.body.appendChild(kiss);
+
+    setTimeout(() => {
+      kiss.remove();
+    }, duration * 1000);
   }
 }
 
@@ -97,20 +150,63 @@ complimentBtn.addEventListener("click", function () {
   complimentOutput.classList.add("fade-in");
 });
 
+// Memory Generator with Fade-In Effect
+const memories = [
+  { image: "memories/bashor.jpg", caption: "The night when we finally had our first moment of privacy. The night when our sacred bond of marriage was truly completed. The night when we shared a bed as husband and wife for the very first time. A night filled with love, intimacy, and memories that we will cherish forever. A night we shall never forget" },
+  { image: "memories/first_rickshaw_ride.jpg", caption: "বিয়ের আগে তুমি কতবার বলেছিলে, “কবে আমরা একসাথে রিকশায় ঘুরবো?” সেই ছোট্ট ইচ্ছেটা অবশেষে পূরণ হলো। অনেক আনন্দ আর ভালোবাসা নিয়ে, হাত ধরে হরগ্রাম থেকে রানীনগরের পথে তোমার সাথে প্রথমবার রিকশায় চড়া, মুহূর্তটা সত্যিই ছিল অন্যরকম।" },
+  { image: "memories/KL_hotel.jpg", caption: "কুয়ালালামপুর ঘুরে দেখার আগে, এই জায়গাটাতেই আমরা বের হয়ে দাঁড়াতাম, আমাদের Grab-এর জন্য অপেক্ষা করতাম। এখানে তোলা ছবিগুলো, আমাদের ছোট ছোট দুষ্টুমি আর হাসির মুহূর্তগুলো, সবকিছুই সত্যিই ভোলার মতো নয়" },
+  { image: "memories/langkawi_last_dinner.jpg", caption: "Our last dinner in Langkawi. Delicious pizza, a magical Christmas atmosphere, and the most beautiful woman beside me" },
+  { image: "memories/mermaid_last_dinner.jpg", caption: "A cozy candlelight dinner beside the sea, with the waves roaring and the harsh weather around us. But none of it mattered because your smile and your presence made the whole night feel magical. You filled the air with warmth and my heart with happiness. Our last Mermaid dinner was truly unforgettable" },
+  { image: "memories/mermaid_room.jpg", caption: "শুধু তুমি, আমি আর অনেক অনেক খেলাধুলা ❤️😉" },
+  { image: "memories/pantai_cenang.jpg", caption: "Pantai Cenang with my favorite person. I love how you always come up with the most unique and interesting picture ideas. every photo with you turns into a beautiful memory" },
+  { image: "memories/putra.jpg", caption: "Our first sightseeing stop in Malaysia, and what a beautiful start it was. The Pink Mosque was truly majestic. Thank you for these lovely outfits and for making this moment even more special" },
+  { image: "memories/sunset.jpg", caption: "It was the most beautiful sunset I have ever seen, but witnessing it with you made it something truly extraordinary. The whole moment felt surreal, as if time had stopped just for us. Booking that spot on the boat made me so happy. It may have been our most expensive booking in Malaysia, but seeing your smile and sharing that magical evening with you made it worth every single penny. A memory we will cherish forever" },
+  { image: "memories/swimming.jpg", caption: "তোমার সাথে পুলে নামার মুহূর্তগুলো আমার ভীষণ প্রিয়। মনে হয় প্রতিটা সেকেন্ডই যেন আলাদা করে মনে রাখার মতো। ওই মুহূর্তে তোমার মুখে সেই আনন্দের হাসি দেখাটাই আমার কাছে সবচেয়ে বড় সুখ ছিল।" },
+  { image: "memories/twin_tower.jpg", caption: "Visiting the Twin Towers of KL had been a childhood dream of mine. Finally standing there felt surreal, but what made the moment truly unforgettable was having you beside me. Dreams do come true, and I couldn't have imagined a better person to share this memory with." },
+  { image: "memories/cable_car.jpg", caption: "A little scared, a lot excited, and completely in awe. Riding the steepest cable car in Langkawi together turned into a beautiful adventure" }
+];
+
+const memoryBtn = document.getElementById("memory-btn");
+const memoryOutput = document.getElementById("memory-output");
+const memoryImg = document.getElementById("memory-img");
+const memoryCaption = document.getElementById("memory-caption");
+let lastMemoryIndex = -1;
+
+memoryBtn.addEventListener("click", function () {
+  let randomIndex = Math.floor(Math.random() * memories.length);
+
+  if (memories.length > 1) {
+    while (randomIndex === lastMemoryIndex) {
+      randomIndex = Math.floor(Math.random() * memories.length);
+    }
+  }
+
+  const memory = memories[randomIndex];
+  lastMemoryIndex = randomIndex;
+
+  memoryImg.src = memory.image;
+  memoryCaption.textContent = memory.caption;
+  memoryOutput.style.display = "block";
+
+  memoryOutput.classList.remove("fade-in");
+  void memoryOutput.offsetWidth; // restart animation
+  memoryOutput.classList.add("fade-in");
+});
+
 // Wedding Video Lightbox (YouTube version)
 document.addEventListener("DOMContentLoaded", () => {
-  const videoTrigger = document.querySelector(".video-trigger");
+  const videoTriggers = document.querySelectorAll(".video-trigger");
   const videoPopup = document.getElementById("video-popup");
   const popupVideo = document.getElementById("popup-video");
   const closeVideoBtn = document.getElementById("close-video-popup");
 
-  // Replace with your actual YouTube video ID
-  const YOUTUBE_VIDEO_ID = "oiXjDZua0YA";
-
   // Open popup and start playing YouTube video
-  videoTrigger.addEventListener("click", () => {
-    popupVideo.src = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&rel=0`;
-    videoPopup.style.display = "flex";
+  videoTriggers.forEach(videoTrigger => {
+    videoTrigger.addEventListener("click", () => {
+      const videoId = videoTrigger.dataset.videoId;
+      popupVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+      videoPopup.style.display = "flex";
+    });
   });
 
   // Close popup and stop video
