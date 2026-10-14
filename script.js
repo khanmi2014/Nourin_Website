@@ -26,8 +26,36 @@ function countdown(id, targetDateLocal) {
   }, 1000);
 }
 
-countdown("anniversary", "2026-07-15T00:00:00");
-countdown("nextmeet", "2026-08-02T00:00:00");
+// Count-Up Function
+function countUp(id, startDateLocal) {
+  let start = new Date(startDateLocal).getTime();
+
+  setInterval(function () {
+    let now = new Date().getTime();
+    let distance = now - start;
+
+    if (distance < 0) {
+      document.getElementById(id).innerHTML = "Waiting for that day...";
+      return;
+    }
+
+    let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    let hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById(id).innerHTML = `
+    <span><strong>${days}</strong><small>Days</small></span>
+    <span><strong>${hours}</strong><small>Hours</small></span>
+    <span><strong>${minutes}</strong><small>Minutes</small></span>
+    <span><strong>${seconds}</strong><small>Seconds</small></span>
+  `;
+  }, 1000);
+}
+
+countUp("lasttouch", "2026-08-19T00:00:00");
+// countdown("anniversary", "2026-07-15T00:00:00");
+// countdown("nextmeet", "2026-08-02T00:00:00");
 
 // Confetti Effect
 function throwConfetti() {
@@ -68,6 +96,30 @@ function createFloatingHeart() {
 
 setInterval(createFloatingHeart, 1400);
 
+function createFloatingBalloon() {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+  const balloons = ["🎈", "🎀", "✨"];
+  const balloon = document.createElement("span");
+  const duration = Math.random() * 5 + 8;
+  const drift = Math.random() * 150 - 75;
+  const size = Math.random() * 1.1 + 1.2;
+
+  balloon.className = "floating-balloon";
+  balloon.textContent = balloons[Math.floor(Math.random() * balloons.length)];
+  balloon.style.left = Math.random() * 100 + "vw";
+  balloon.style.setProperty("--balloon-duration", duration + "s");
+  balloon.style.setProperty("--balloon-drift", drift + "px");
+  balloon.style.setProperty("--balloon-size", size + "rem");
+  document.body.appendChild(balloon);
+
+  setTimeout(() => {
+    balloon.remove();
+  }, duration * 1000);
+}
+
+setInterval(createFloatingBalloon, 2600);
+
 function sendPromiseKisses(button) {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
@@ -102,9 +154,50 @@ function sendPromiseKisses(button) {
 document.addEventListener("DOMContentLoaded", function () {
   const popup = document.getElementById("welcome-popup");
   const goBtn = document.getElementById("go-btn");
+  const bgMusic = document.getElementById("bg-music");
+  const musicToggle = document.getElementById("music-toggle");
+
+  function updateMusicToggle() {
+    if (bgMusic.paused) {
+      musicToggle.textContent = "♪";
+      musicToggle.setAttribute("aria-label", "Play background music");
+      musicToggle.classList.remove("is-playing");
+    } else {
+      musicToggle.textContent = "❚❚";
+      musicToggle.setAttribute("aria-label", "Pause background music");
+      musicToggle.classList.add("is-playing");
+    }
+  }
+
+  function playBackgroundMusic() {
+    bgMusic.volume = 0.3;
+    bgMusic.play().then(updateMusicToggle).catch(updateMusicToggle);
+  }
+
+  window.pauseBackgroundMusic = function () {
+    bgMusic.pause();
+    updateMusicToggle();
+  };
 
   goBtn.addEventListener("click", function () {
     popup.style.display = "none"; // hide popup
+    playBackgroundMusic();
+  });
+
+  musicToggle.addEventListener("click", function () {
+    if (bgMusic.paused) {
+      playBackgroundMusic();
+    } else {
+      bgMusic.pause();
+      updateMusicToggle();
+    }
+  });
+
+  document.querySelectorAll("audio:not(#bg-music)").forEach(audio => {
+    audio.addEventListener("play", () => {
+      bgMusic.pause();
+      updateMusicToggle();
+    });
   });
 });
 
@@ -162,27 +255,54 @@ const memories = [
   { image: "memories/putra.jpg", caption: "Our first sightseeing stop in Malaysia, and what a beautiful start it was. The Pink Mosque was truly majestic. Thank you for these lovely outfits and for making this moment even more special" },
   { image: "memories/sunset.jpg", caption: "It was the most beautiful sunset I have ever seen, but witnessing it with you made it something truly extraordinary. The whole moment felt surreal, as if time had stopped just for us. Booking that spot on the boat made me so happy. It may have been our most expensive booking in Malaysia, but seeing your smile and sharing that magical evening with you made it worth every single penny. A memory we will cherish forever" },
   { image: "memories/swimming.jpg", caption: "তোমার সাথে পুলে নামার মুহূর্তগুলো আমার ভীষণ প্রিয়। মনে হয় প্রতিটা সেকেন্ডই যেন আলাদা করে মনে রাখার মতো। ওই মুহূর্তে তোমার মুখে সেই আনন্দের হাসি দেখাটাই আমার কাছে সবচেয়ে বড় সুখ ছিল।" },
-  { image: "memories/twin_tower.jpg", caption: "Visiting the Twin Towers of KL had been a childhood dream of mine. Finally standing there felt surreal, but what made the moment truly unforgettable was having you beside me. Dreams do come true, and I couldn't have imagined a better person to share this memory with." },
-  { image: "memories/cable_car.jpg", caption: "A little scared, a lot excited, and completely in awe. Riding the steepest cable car in Langkawi together turned into a beautiful adventure" }
+  { image: "memories/twin_tower.jpg", caption: "Visiting the Twin Towers of KL had been a childhood dream of mine. Finally standing there felt surreal, but what made the moment truly unforgettable was having you beside me. Dreams do come true, and I couldn't have imagined a better person to share this memory with" },
+  { image: "memories/cable_car.jpg", caption: "A little scared, a lot excited, and completely in awe. Riding the steepest cable car in Langkawi together turned into a beautiful adventure" },
+  { image: "memories/first_flight.jpg", caption: "A beautiful night on board the 787... Our first international flight together" },
+  { image: "memories/first_ring.jpg", caption: "My first ring for you, a little symbol of my endless love for you 💍" },
+  { image: "memories/swing.jpg", caption: "The super thrilling moment right before we were launched into the sky on the Ella swing" },
+  { image: "memories/9arch.jpg", caption: "The beautiful view of the 9 arch bridge, a memory we’ll cherish together for the rest of our lives" },
+  { image: "memories/galle_pizza.jpg", caption: "You, me, and pizza 🍕❤️ My forever pizza partner... This was the best pizza we had in Sri Lanka" },
+  { image: "memories/coconut_tree.jpg", caption: "That reaction of yours is everything to me. I love you, Jaan" },
+  { image: "memories/nuwara_cabin.jpg", caption: "Sharing this beautiful cabin with you is a memory I’ll cherish forever, and what a view we got from here" }
 ];
 
 const memoryBtn = document.getElementById("memory-btn");
 const memoryOutput = document.getElementById("memory-output");
 const memoryImg = document.getElementById("memory-img");
 const memoryCaption = document.getElementById("memory-caption");
-let lastMemoryIndex = -1;
+let memoryQueue = [];
+let lastMemory = null;
 
-memoryBtn.addEventListener("click", function () {
-  let randomIndex = Math.floor(Math.random() * memories.length);
+function shuffleMemories() {
+  memoryQueue = [...memories];
 
-  if (memories.length > 1) {
-    while (randomIndex === lastMemoryIndex) {
-      randomIndex = Math.floor(Math.random() * memories.length);
-    }
+  for (let i = memoryQueue.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [memoryQueue[i], memoryQueue[randomIndex]] = [memoryQueue[randomIndex], memoryQueue[i]];
   }
 
-  const memory = memories[randomIndex];
-  lastMemoryIndex = randomIndex;
+  if (memoryQueue.length > 1 && memoryQueue[0] === lastMemory) {
+    const swapIndex = Math.floor(Math.random() * (memoryQueue.length - 1)) + 1;
+    [memoryQueue[0], memoryQueue[swapIndex]] = [memoryQueue[swapIndex], memoryQueue[0]];
+  }
+}
+
+memoryBtn.addEventListener("click", function () {
+  if (memoryQueue.length === 0) {
+    shuffleMemories();
+  }
+
+  const memory = memoryQueue.shift();
+  lastMemory = memory;
+
+  if (!memory) {
+    memoryCaption.textContent = "Add more memories soon ❤️";
+    memoryOutput.style.display = "block";
+    if (memoryImg) {
+      memoryImg.removeAttribute("src");
+    }
+    return;
+  }
 
   memoryImg.src = memory.image;
   memoryCaption.textContent = memory.caption;
@@ -204,6 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
   videoTriggers.forEach(videoTrigger => {
     videoTrigger.addEventListener("click", () => {
       const videoId = videoTrigger.dataset.videoId;
+      if (window.pauseBackgroundMusic) window.pauseBackgroundMusic();
       popupVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
       videoPopup.style.display = "flex";
     });
@@ -231,9 +352,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const popupImg = document.getElementById("popup-img");
   const closeBtn = document.getElementById("close-popup");
 
-  // Handle clicks on timeline images
-  document.querySelectorAll(".timeline-img").forEach(img => {
+  // Handle clicks on expandable images
+  document.querySelectorAll(".timeline-img, .song-cover, #memory-img").forEach(img => {
     img.addEventListener("click", () => {
+      if (!img.src) return;
       popup.style.display = "flex";
       popupImg.src = img.src;
     });
@@ -245,43 +367,4 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === popup) popup.style.display = "none";
   });
 });
-
-// Song Carousel
-document.addEventListener("DOMContentLoaded", () => {
-  const wrapper = document.querySelector(".songs-wrapper");
-  const nextBtn = document.querySelector(".next-btn");
-  const prevBtn = document.querySelector(".prev-btn");
-  const totalSongs = document.querySelectorAll(".song-card").length;
-  let index = 0;
-
-  function updateCarousel() {
-    wrapper.style.transform = `translateX(-${index * 100}%)`;
-  }
-
-  nextBtn.addEventListener("click", () => {
-    index = (index + 1) % totalSongs;
-    updateCarousel();
-  });
-
-  prevBtn.addEventListener("click", () => {
-    index = (index - 1 + totalSongs) % totalSongs;
-    updateCarousel();
-  });
-
-  // Swipe support for mobile
-  let startX = 0;
-  wrapper.addEventListener("touchstart", e => (startX = e.touches[0].clientX));
-  wrapper.addEventListener("touchend", e => {
-    let endX = e.changedTouches[0].clientX;
-    if (startX - endX > 50) nextBtn.click();
-    else if (endX - startX > 50) prevBtn.click();
-  });
-});
-
-
-
-
-
-
-
 

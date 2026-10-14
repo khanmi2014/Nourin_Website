@@ -21,10 +21,15 @@
       <button id="go-btn">Go</button>
     </div>
   </div>
+
+  <audio id="bg-music" loop preload="auto">
+    <source src="songs/hbd.mp3" type="audio/mpeg">
+  </audio>
+  <button id="music-toggle" class="music-toggle" type="button" aria-label="Pause background music">♪</button>
   
   <!-- Hero Section -->
   <header class="hero">
-    <h1>One Year of Forever ❤️</h1>
+    <h1>Happy Birthday, My Nourin ❤️</h1>
   </header>
 
   <!-- Horizontal Timeline -->
@@ -210,11 +215,41 @@
     <div class="event-dot"></div>
   </div>
 
+  <!-- Event 20 -->
+  <div class="timeline-event">
+    <div class="event-content">
+      <span class="date">July 15, 2026</span>
+      <p>Celebrating our 1st Anniversary... but far apart in distance 💍</p>
+      <img src="images/anniversary1.jpg" alt="Anniversary1" class="timeline-img"/>
+    </div>
+    <div class="event-dot"></div>
+  </div>
+
+  <!-- Event 21 -->
+  <div class="timeline-event">
+    <div class="event-content">
+      <span class="date">August 03, 2026 - August 12, 2026</span>
+      <p>Sri Lanka Trip 🇱🇰</p>
+      <img src="images/srilanka.jpg" alt="Srilanka" class="timeline-img"/>
+    </div>
+    <div class="event-dot"></div>
+  </div>
+
+  <!-- Event 22 -->
+  <div class="timeline-event">
+    <div class="event-content">
+      <span class="date">September 9, 2026</span>
+      <p>Another birthday, another huge surprise  🤯</p>
+      <img src="images/s_bday_2026.jpg" alt="s_birthday_2026" class="timeline-img"/>
+    </div>
+    <div class="event-dot"></div>
+  </div>
+
 </section>
 
   <!-- Reasons I Love You -->
   <section class="reasons">
-    <h2>❤️ 25 Reasons I Love You ❤️</h2>
+    <h2>❤️ Reasons I Love You ❤️</h2>
     <ul>
       <li>Your kindness</li>
       <li>Your mesmerizing smile</li>
@@ -246,7 +281,7 @@
 
   <!-- Digital Birthday Card -->
   <section class="card">
-    <h2>💍 Anniversary Promises 💍</h2>
+    <h2>💍 Promises 💍</h2>
     <p>I promise to protect your smile.</p>
     <p>I promise to keep choosing you.</p>
     <p>I promise to make distance feel smaller with love.</p>
@@ -313,73 +348,95 @@
 <section id="favorite-songs">
   <h2>🎶 Your Songs 🎶</h2>
 
-  <div class="songs-carousel">
-    <div class="songs-wrapper">
-
-      <div class="song-card">
-        <img src="images/we_are_perfect.jpg" alt="Perfect" class="song-cover">
-        <p class="song-title">Perfect – Ed Sheeran</p>
-        <audio controls>
-          <source src="songs/perfect.mp3" type="audio/mpeg">
-        </audio>
+  <div class="songs-list">
+    <div class="song-row">
+      <img src="images/we_are_perfect.jpg" alt="Perfect cover" class="song-cover">
+      <div class="song-info">
+        <p class="song-title">Perfect</p>
+        <p class="song-artist">Ed Sheeran</p>
       </div>
-
-      <div class="song-card">
-        <img src="images/dil_zara.jpg" alt="Ae Dil Zara" class="song-cover">
-        <p class="song-title">Ae Dil Zara – Auron Mein Kahan Dum Tha</p>
-        <audio controls>
-          <source src="songs/ae_dil_zara.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-
-      <div class="song-card">
-        <img src="images/megh_balika2.jpg" alt="megh_balika" class="song-cover">
-        <p class="song-title">Megh Balika – Kacher Manush Dure Thuiya</p>
-        <audio controls>
-          <source src="songs/megh_balika.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-
-      <div class="song-card">
-        <img src="images/niye_jabe2.jpg" alt="niye_jabe_ki" class="song-cover">
-        <p class="song-title">Niye Jabe Ki - Daagi</p>
-        <audio controls>
-          <source src="songs/niye_jabe_ki.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-
-      <div class="song-card">
-        <img src="images/pehla.jpg" alt="pehla_nasha" class="song-cover">
-        <p class="song-title">Pehla Nasha - Udit Narayan, Sadhana sargam</p>
-        <audio controls>
-          <source src="songs/pehla_nasha.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-
-      <div class="song-card">
-        <img src="images/kodom_pic.jpg" alt="Kodom" class="song-cover">
-        <p class="song-title">Kodom - Blue Jeans</p>
-        <audio controls>
-          <source src="songs/kodom.mp3" type="audio/mpeg">
-        </audio>
-      </div>
-
+      <audio controls>
+        <source src="songs/perfect.mp3" type="audio/mpeg">
+      </audio>
     </div>
 
-  </div>
+    <div class="song-row">
+      <img src="images/dil_zara.jpg" alt="Ae Dil Zara cover" class="song-cover">
+      <div class="song-info">
+        <p class="song-title">Ae Dil Zara</p>
+        <p class="song-artist">Auron Mein Kahan Dum Tha</p>
+      </div>
+      <audio controls>
+        <source src="songs/ae_dil_zara.mp3" type="audio/mpeg">
+      </audio>
+    </div>
 
-  <!-- Buttons BELOW song card -->
-  <div class="song-controls">
-    <button class="song-btn prev-btn">⟨ Prev</button>
-    <button class="song-btn next-btn">Next ⟩</button>
+    <div class="song-row">
+      <img src="images/megh_balika2.jpg" alt="Megh Balika cover" class="song-cover">
+      <div class="song-info">
+        <p class="song-title">Megh Balika</p>
+        <p class="song-artist">Kacher Manush Dure Thuiya</p>
+      </div>
+      <audio controls>
+        <source src="songs/megh_balika.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <div class="song-row">
+      <img src="images/niye_jabe2.jpg" alt="Niye Jabe Ki cover" class="song-cover">
+      <div class="song-info">
+        <p class="song-title">Niye Jabe Ki</p>
+        <p class="song-artist">Daagi</p>
+      </div>
+      <audio controls>
+        <source src="songs/niye_jabe_ki.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <div class="song-row">
+      <img src="images/pehla.jpg" alt="Pehla Nasha cover" class="song-cover">
+      <div class="song-info">
+        <p class="song-title">Pehla Nasha</p>
+        <p class="song-artist">Udit Narayan, Sadhana Sargam</p>
+      </div>
+      <audio controls>
+        <source src="songs/pehla_nasha.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <div class="song-row">
+      <img src="images/kodom_pic.jpg" alt="Kodom cover" class="song-cover">
+      <div class="song-info">
+        <p class="song-title">Kodom</p>
+        <p class="song-artist">Blue Jeans</p>
+      </div>
+      <audio controls>
+        <source src="songs/kodom.mp3" type="audio/mpeg">
+      </audio>
+    </div>
+
+    <div class="song-row">
+      <img src="images/arancio.jpg" alt="Come l’Arancio Amaro cover" class="song-cover">
+      <div class="song-info">
+        <p class="song-title">Come l’Arancio Amaro</p>
+        <p class="song-artist">A Love Song from Lost Italy</p>
+      </div>
+      <audio controls>
+        <source src="songs/arancio.mp3" type="audio/mpeg">
+      </audio>
+    </div>
   </div>
-</div>
 </section>
 
 
   <!-- Countdowns -->
   <section class="countdowns">
     <h2>⏳ Special Countdowns ⏳</h2>
+    <div class="countdown sad-countdown">
+      <h3>Days since our last touch 😢 😢😢</h3>
+      <p id="lasttouch"></p>
+    </div>
+    <!--
     <div class="countdown">
       <h3>Our Wedding Anniversary 💍</h3>
       <p id="anniversary"></p>
@@ -388,6 +445,7 @@
       <h3>Next Time We Meet 🫂</h3>
       <p id="nextmeet"></p>
     </div>
+    -->
   </section>
 
 <!-- Footer -->
